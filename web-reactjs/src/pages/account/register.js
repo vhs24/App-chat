@@ -119,11 +119,11 @@ const Register = () => {
   const requestOTP = async () => {
     generateRecaptcha();
     const res = await api.user.getUserByPhoneNumber(phoneNumber);
-    // console.log(res.data);
-    // console.log(res.status);
+    console.log(res.data);
+    console.log(res.status);
     if (res.data) {
       const user = res.data;
-      // console.log(user);
+      console.log(user);
       message.error("Số điện thoại đã được đăng ký");
       return;
       // props.setCurrentConv()
@@ -175,7 +175,7 @@ const Register = () => {
               message.success("Đăng ký thành công!");
               const values = { phoneNumber, password };
               const response = await accountApi.login(values);
-              // console.log("login", response);
+              console.log("login", response);
               accountApi.save_token(response);
               accountApi.save_info(response);
 

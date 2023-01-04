@@ -70,7 +70,6 @@ const authController = {
     try {
       const salt = await bcrypt.genSalt(10);
       const hash = await bcrypt.hash(req.body.password, salt);
-
       const user = await new User({
         name: req.body.name,
         phoneNumber: req.body.phoneNumber,
@@ -85,13 +84,15 @@ const authController = {
   },
   loginUser: async (req, res) => {
     console.log(req.body);
+    const user = await User.findOne({ phoneNumber: req.body.phoneNumber });
     try {
-      const user = await User.findOne({ phoneNumber: req.body.phoneNumber });
+      
 
       if (!user) {
         return res.status(404).json("phoneNumber is not correct");
       }
       const validatePassword = await bcrypt.compare(req.body.password,user.password);
+      console.log(validatePassword);
       if (!validatePassword) {
         return res.status(404).json("password is not correct");
       }
@@ -114,6 +115,7 @@ const authController = {
     } catch (error) {
       console.log(error);
       res.status(500).json(error);
+      console.log(user.password+"-"+user.phoneNumber+"-"+req.body.password);
     }
   },
   // request new access token from refresh token in cookies

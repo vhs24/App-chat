@@ -53,7 +53,7 @@ const Login = () => {
     const accountApi = new AccountApi();
     try {
       const response = await accountApi.login(values);
-      // console.log("login", response);
+      console.log("login", response);
       accountApi.save_token(response);
       accountApi.save_info(response);
 
@@ -67,6 +67,8 @@ const Login = () => {
       navigate("/");
     } catch (error) {
       message.error("Sai số điện thoại hoặc mật khẩu");
+      console.log(values.phoneNumber);
+      console.log(values.password);
     } finally {
       stopLoading(0);
     }

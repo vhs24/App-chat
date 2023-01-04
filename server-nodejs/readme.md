@@ -1,16 +1,16 @@
 # Source Code Server - App Chat Realtime
-## Member
+
 ## To Run Project `App Chat Realtime`
-1. `Install Git`
-2. `Clone Project`
+1. `Clone Project`
 ```sh
-git clone https://github.com/ButHetMuc/Gavroche-chat-app.git
+git clone https://github.com/vhs24/Chat-app.git
 ```
-3. `Open source code, dowload dependencies libraries`
+2. `Open source code, dowload dependencies libraries`
 ```sh
+cd server-nodejs
 npm install
 ```
-4. `Run project Server`
+3. `Run project Server`
 ```sh
 npm start
 ```
